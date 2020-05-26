@@ -1,0 +1,42 @@
+md 5 cannot encrypt terminal password (=secret)
+
+a uthentication
+a uthorization   E.G,#. Protocol (Radius, Tacacs)
+a ccounting (=collet logs)
+
+  commands:
+    #aaa new-mode1
+    #tacacs-server  host {ip} key {name}
+    #aaa authentication login default group tacacs+ local //for safe set default user which can get login if the server connection lost
+    #aaa accounting ? //get overview
+    #aaa accounting exec default start-stop group tacacs+ //command to collect logs about user which log-in and log-out
+      // if you have access to physical hardware you can set and collet a lot of logs if you want to (Logical not possible)
+
+
+<SSH>
+  commands:
+    #ip domain-name {name}
+    #crypto key generate rsa //creat RSA encryption
+    #ip ssh version 2
+    #line vty 0
+    #transprot input ssh
+    (#login local)
+
+
+<PORT MIRRORING> //function to copy date from port to another port for diagnose the traffic of network && analysis to search error
+  commands:
+    #monitor session 1 source interface fastEthernet {prot e.g 0/1} //default read and write
+    #monitor session 1 destinatino int //goal where you want the date to go
+    #monioor session 1 source vlan {num} //you can monitor all with sniffer
+
+
+<EtherChannel||LinkggregatioPort> //connet two physical port into one logical port → 2 active even through FTP working
+  using Static → without protocol, without additional movement in network
+    command:
+      #interface range fastEthernet {port}
+      #channel-group 1 mode ? //max 6 groups to max 8 port (12.5% port load) have to even number; mode ? (=get overview) → for static use "on" mode; + others are for non-static
+      #show etherechannel //see result
+  using Dynamic → with protocol |→ PaGP (=port aggregation protocol) for cisco || LACP (=Link Aggregation Control Protocol) &forall
+    commands:
+      #channel-group 1 mode auto||desirable //for dynamic using PaGP:= it use auto||desirable (=do not really matter which one)
+      #show etherchannel //see result

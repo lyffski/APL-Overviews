@@ -1,0 +1,29 @@
+
+this ->
+wskaznik (wchwyt, referncja) obiektu, na rzecz ktorego dana methoda (tutaj obsluga zdarzenia) zostala wywolana.
+
+<header>
+zawartosc wewnatrz tego znacznika okreslamy jako wstepna, wprowadzajaca tresc do najblizszego semantycznego poprzednika tego tagu
+(np. artykuly, sekcji, aside'a, stopki) albo wyjatkowo jako wstep do calej podsttron (wowczas sematnycznym poprzedinkiem tego naglowka jes otwierajacy teg body)
+Oprocz tresci wstepnych, w prktyce headery zweieraja czesto elementy nawigacjne.
+
+<nav>
+zawrtosc wewnatrz tego znacznika okreslamy jako poslinkowana tresc prowadzaca do innych podstron witryny (lub do zewnetrzych domen.) jJest to zatem "wewnetrzny obszar navigacyjny"
+wlasciwy danej witryne. Docelowo moze to umozliwic robotom czytajacym szybki dostep do glownej zawartosci, z pominieciem kazdorazoweego odczytywania navigacji. 
+UWAGA: nie wszystkie zestawienia linkow na stronie musza zostac zamikniete w navie (np. linki w stopce -to nie jest glowan navigacja)
+
+<article>
+zawartosc wewnätz tego znacznika okreslamy jako kompletna, dajlaca sie wyrozniic, odrebna od innych tresc witryny. Stanowi autonomiczna calosc, czesto przyjume tez powtatzalna forme
+np wpis blowgowy, post na formu, artykul w portalu. Znaczniki te mozna zagniezdzac, jesli wewnetrzny artykul (mimo swej odrebnosci) jest w jakis sposob powiazany z artkulem zewnetrznym
+(np. stanowi komentarz do niego)
+
+<section>
+zawartosci wewnätrz twgo znacznika okreslamy jako tematyczne zgrupownana tresc, a temat kazdej takiej sekcji powinien zostac okreslony w jej czesci naglowkowej. 
+Sekcje stanowia w zalozeniu czesc wiekszej calosci, w przeciwienstwie do artykulu, ktory just autonomiczna caloscia. Uzycie sekcji zamist arykulu zalezne just w praktyce od intecji programisty
+
+<aside>
+zawartosc wewnatz tego znaczink okreslmy jko tresci jedynie marginale powiazana z glowna zawartoscia witryny (np. rekalmy, poboczna nawigacje, widgety i feed socialmediowe ide.)
+
+<footer>
+zawartosc wewnatrz tego znacznika okreslamy jako tresc koncowa (stopke) najblisczego sematycznego poprzednika tego tagu. Zatem podobine jest naglowkow header, rowniez tagouw
+footer moze byc na stronie wiele (wspolczesnie stopka to nie tylko zakonczenie calej podstrony)

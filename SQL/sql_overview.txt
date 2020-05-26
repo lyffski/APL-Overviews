@@ -1,0 +1,24 @@
+HAVING
+    can be used with aggregated functions and after GROUP BY or along with COUNT(*)
+    
+INSERT IGNORE
+
+REPLACE
+
+DISTINCT 
+    to find out unique records available in a table
+
+
+$mysqldump //for outfile and infile
+
+INTO OUTFILE
+    for Export
+    FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+    LINES TERMINATED BY '/r/n';
+LOAD DATA "LOCAL" INFILE 'dump.txt' INTO TABLE mytbl;
+    FIELDS TERMINATED BY ',' ENCLOSED BY '"' //if not enclosed then the escape character will read by SQL
+        $ mysqlimport -u root -p --local --fields-terminated-by = ":" /
+          --lines-terminated-by = "\r\n" database_name dump.txt
+    LINES TERMINATED BY '/r/n';
+
+always you have to log in into the db of sql

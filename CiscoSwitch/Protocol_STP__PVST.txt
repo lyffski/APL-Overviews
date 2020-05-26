@@ -1,0 +1,44 @@
+Protocol ICMP (ping work on that)
+Protocol ARP (map the ping to mac needed to create net frame)
+
+<STP> (=Spanning Tree Protocol) //needed in net where using redundant connection && is on by default but do not support the vlan network that the main issue
+//detects frame net loops w lan-network && Deactivate redundant connection && Let only one active connection path between hosts
+  commands:
+    #conf t
+    #spanning-tree vlan 1
+  Root Bridge (=avoiding network loops) := Main switch w net-lan being a reference for algo of spanning tree to calculation which has as a goal to get network convergence and to set a route without frames loops //the lowest priority number value in net is the rootBridge
+    change id priority: 1. set id in range 1-65536 (step each 4096) || manually set ROOT BRIDGE (id change to 245760)
+      using 2. := commands:
+        #spanning-tree clan 1 root primary
+        #show spanning-tree //see result
+  Gender of STP ports
+    designated := port providing communications and BPDU frames
+    root := port being the nears to the rootBridge, providing communications and BPDU frames
+    alternative := port which is deactivated by STP protocol to avoid the frames loop, but can provide BPDU frames
+  States of STP ports
+    listening := port sent only BPDU (=bridge protocol date unit) := frames of STP protocol consistence of id priority to set the root bridge of STP. sented between devices according to Hello Time
+    blocking := port do not provide communication frames but can provide BPDU frames
+    learning := port learn the MAC address of linked devices
+    forwarding := port provide communication and BPDU frames
+      → get through all states take some time, could be avoided using PORTFAST
+        Portfast := CISCO technology which allow the transitions to be faster with (listening && learning) = false. → use no on port that are no access Ports
+          commands:
+            #interface fastEthernet {port number}
+            #spanning-ree portfast
+            #spanning-tree bpduguard enable //configure to not receive STP || BPDU frames
+  Cost (=the shortest way to get to the root bridge) // the values are constant
+    100 Mb/s = 19
+    1 Gb/s = 4
+    10 Gb/s = 2
+
+((due to the issue of STP there are better alternatives:
+PVST (=PerVlanSPanningTree) := variety of STP protocol which support Vlan networks
+  commands: //allow to have different root bridge on different Vlan's network
+  Switch(config)#spanning-tree mode pvst
+Rapid-PVST := variety of STP protocol which is even faster for getting the network convergence
+  commands:
+    #spanning-tree mode rapid-pvst 4
+
+Network convergence := The process to choose the root bridge, the designated ports, the root ports and the alternative ports. Done after run of switch and after change configure and after change of topology
+Hello time := the time between the devices sent the BPDU frames //default 2 seconds
+transmission delay := time during the listening and the learning statement in STP Protocol

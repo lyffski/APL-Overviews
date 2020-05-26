@@ -1,0 +1,64 @@
+Rank (=setting ranks according to the values)
+  Rank 
+    if same value, display same highest rank, but do not have the same "ID order"
+  Rank Dense
+    if same value, display same rank, and the same "ID order"
+  Rank Modified
+    if same value display same lowest rank but do not have the same ID order
+  Rank Unique
+    each value have unique rank
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+fixed 
+include
+exclude
+
+FIXED=  
+    Clac independent form viz 
+
+    if viz has two dimensions:
+    {FIXED  [Category]  :   SUM([sales])}
+    will give you SUM(sales) for each [Category]
+
+    Equivalent to mySQL:
+        {FIXED [Category]:SUM([sales])}
+        ==
+        select
+            SUM([sales]),
+            [Category]
+        form   
+            [sample - Superstore]
+        group by
+            [Category]
+
+
+INCLUDE=
+    Calc dependent form viz
+        specified a level of a detail even though it is not on the view
+
+    if your viz has this dimension: Segment
+        {INCLUDE [CustomerID]:SUM([sales])}
+    will give you SUM(Sales) for each   [Segment]
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
+Rank (=setting ranks according to the values)
+  Rank 
+    if same value, display same highest rank, but do not have the same "ID order"
+  Rank Dense
+    if same value, display same rank, and the same "ID order"
+  Rank Modified
+    if same value display same lowest rank but do not have the same ID order
+  Rank Unique
+    each value have unique rank
+  
+
+
+
+
+
+
